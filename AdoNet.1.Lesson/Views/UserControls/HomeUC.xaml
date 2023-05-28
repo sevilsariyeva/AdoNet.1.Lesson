@@ -7,9 +7,51 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="MidnightBlue">
-        <Button Width="200" Height="50" Margin="10,0,590,350" Content="INSERT" FontSize="30" FontWeight="ExtraBlack" Background="White"></Button>
-        <ListBox Width="300" Margin="480,76,20,24">
-            
+        <Label Width="30" Height="40" Content="Id" FontSize="20" Foreground="White" Margin="10,0,750,360"></Label>
+        <Label Width="80" Height="40" Content="Name" FontSize="20" Foreground="White" Margin="177,0,543,360"></Label>
+        <Label Width="100" Height="40" Content="Pages" FontSize="20" Foreground="White" Margin="369,0,331,360"></Label>
+        <Label Width="100" Height="40" Content="Year Press" FontSize="20" Foreground="White" Margin="10,0,680,240"></Label>
+        <Label Width="100" Height="40" Content="Id_Themes" FontSize="20" Foreground="White" Margin="0,0,340,240"></Label>
+        <Label Width="110" Height="40" Content="Id_Category" FontSize="20" Foreground="White" Margin="40,0,0,240"></Label>
+
+        <Label Width="100" Height="40" Content="Id_Author" FontSize="20" Foreground="White" Margin="10,0,680,100"></Label>
+        <Label Width="100" Height="40" Content="Id_Press" FontSize="20" Foreground="White" Margin="0,0,340,100"></Label>
+        <Label Width="110" Height="40" Content="Comment" FontSize="20" Foreground="White" Margin="40,0,0,100"></Label>
+        
+        <Label Width="110" Height="40" Content="Quantity" FontSize="20" Foreground="White" Margin="0,50,330,0"></Label>
+        <TextBox Text="{Binding Id}" Height="30" FontSize="20" Margin="10,0,648,305"/>
+        <TextBox Text="{Binding Name}" Height="30" FontSize="20" Margin="177,0,458,305"/>
+        <TextBox Text="{Binding Pages}" Height="30" FontSize="20" Margin="369,0,266,305"/>
+        <TextBox Text="{Binding YearPress}" Height="30" FontSize="20" Margin="10,0,648,180"/>
+        <TextBox Text="{Binding Themes}" Height="30" FontSize="20" Margin="177,0,458,180"/>
+        <TextBox Text="{Binding Category}" Height="30" FontSize="20" Margin="369,0,266,180"/>
+        <TextBox Text="{Binding Author}" Height="30" FontSize="20" Margin="10,0,648,30"/>
+        <TextBox Text="{Binding Press}" Height="30" FontSize="20" Margin="177,0,458,30"/>
+        <TextBox Text="{Binding Comment}" Height="30" FontSize="20" Margin="369,0,266,30"/>
+        <TextBox Text="{Binding Quantity}" Height="30" FontSize="20" Margin="177,120,458,0"/>
+        <Button Command="{Binding InsertClickCommand}" Width="150" Height="40" Margin="580,0,20,305" Content="INSERT" FontSize="30" FontWeight="ExtraBlack" Background="White"></Button>
+        <Button Command="{Binding DeleteClickCommand}" Width="140" Height="40" Margin="20,250,630,0" Content="DELETE" FontSize="30" FontWeight="ExtraBlack" Background="White"></Button>
+        <Button Command="{Binding ShowClickCommand}" Width="170" Height="40" Margin="20,350,590,0" Content="SHOW ALL" FontSize="30" FontWeight="ExtraBlack" Background="White"></Button>
+        <ListBox Height="300" Margin="547,90,10,10">
+            <ListBox ItemsSource="{Binding Books}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="{Binding Id}" />
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text="{Binding Pages}" />
+                            <TextBlock Text="{Binding YearPress}" />
+                            <TextBlock Text="{Binding Id_Themes}" />
+                            <TextBlock Text="{Binding Id_Category}" />
+                            <TextBlock Text="{Binding Id_Author}" />
+                            <TextBlock Text="{Binding Id_Press}" />
+                            <TextBlock Text="{Binding Comment}" />
+                            <TextBlock Text="{Binding Quantity}" />
+                            <!-- Add more TextBlocks or other controls as needed -->
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </ListBox>
     </Grid>
 </UserControl>
