@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="AdoNet._1.Lesson.Views.UserControls.HomeUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdoNet._1.Lesson.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="MidnightBlue">
+        <Button Width="200" Height="50" Margin="10,0,590,350" Content="INSERT" FontSize="30" FontWeight="ExtraBlack" Background="White"></Button>
+        <ListBox Width="300" Margin="480,76,20,24">
+            
+        </ListBox>
+    </Grid>
+</UserControl>
