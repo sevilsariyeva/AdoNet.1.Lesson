@@ -4,54 +4,60 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AdoNet._1.Lesson.Views.UserControls"
+             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:i1="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="650" d:DesignWidth="1200">
     <Grid Background="MidnightBlue">
-        <Label Width="30" Height="40" Content="Id" FontSize="20" Foreground="White" Margin="10,0,750,360"></Label>
-        <Label Width="80" Height="40" Content="Name" FontSize="20" Foreground="White" Margin="177,0,543,360"></Label>
-        <Label Width="100" Height="40" Content="Pages" FontSize="20" Foreground="White" Margin="369,0,331,360"></Label>
-        <Label Width="100" Height="40" Content="Year Press" FontSize="20" Foreground="White" Margin="10,0,680,240"></Label>
-        <Label Width="100" Height="40" Content="Id_Themes" FontSize="20" Foreground="White" Margin="0,0,340,240"></Label>
-        <Label Width="110" Height="40" Content="Id_Category" FontSize="20" Foreground="White" Margin="40,0,0,240"></Label>
+        <Label Width="30" Height="40" Content="Id" FontSize="20" Foreground="White" Margin="0,0,1130,570"></Label>
+        <Label Width="80" Height="40" Content="Name" FontSize="20" Foreground="White" Margin="0,0,780,570"></Label>
+        <Label Width="100" Height="40" Content="Pages" FontSize="20" Foreground="White" Margin="0,0,450,570"></Label>
+        <Label Width="100" Height="40" Content="Year Press" FontSize="20" Foreground="White" Margin="0,0,170,570"></Label>
+        <Label Width="100" Height="40" Content="Id_Themes" FontSize="20" Foreground="White" Margin="130,0,0,570"></Label>
+        <Label Width="110" Height="40" Content="Id_Category" FontSize="20" Foreground="White" Margin="10,0,1070,400"></Label>
 
-        <Label Width="100" Height="40" Content="Id_Author" FontSize="20" Foreground="White" Margin="10,0,680,100"></Label>
-        <Label Width="100" Height="40" Content="Id_Press" FontSize="20" Foreground="White" Margin="0,0,340,100"></Label>
-        <Label Width="110" Height="40" Content="Comment" FontSize="20" Foreground="White" Margin="40,0,0,100"></Label>
-        
-        <Label Width="110" Height="40" Content="Quantity" FontSize="20" Foreground="White" Margin="0,50,330,0"></Label>
-        <TextBox Text="{Binding Id}" Height="30" FontSize="20" Margin="10,0,648,305"/>
-        <TextBox Text="{Binding Name}" Height="30" FontSize="20" Margin="177,0,458,305"/>
-        <TextBox Text="{Binding Pages}" Height="30" FontSize="20" Margin="369,0,266,305"/>
-        <TextBox Text="{Binding YearPress}" Height="30" FontSize="20" Margin="10,0,648,180"/>
-        <TextBox Text="{Binding Themes}" Height="30" FontSize="20" Margin="177,0,458,180"/>
-        <TextBox Text="{Binding Category}" Height="30" FontSize="20" Margin="369,0,266,180"/>
-        <TextBox Text="{Binding Author}" Height="30" FontSize="20" Margin="10,0,648,30"/>
-        <TextBox Text="{Binding Press}" Height="30" FontSize="20" Margin="177,0,458,30"/>
-        <TextBox Text="{Binding Comment}" Height="30" FontSize="20" Margin="369,0,266,30"/>
-        <TextBox Text="{Binding Quantity}" Height="30" FontSize="20" Margin="177,120,458,0"/>
-        <Button Command="{Binding InsertClickCommand}" Width="150" Height="40" Margin="580,0,20,305" Content="INSERT" FontSize="30" FontWeight="ExtraBlack" Background="White"></Button>
-        <Button Command="{Binding DeleteClickCommand}" Width="140" Height="40" Margin="20,250,630,0" Content="DELETE" FontSize="30" FontWeight="ExtraBlack" Background="White"></Button>
-        <Button Command="{Binding ShowClickCommand}" Width="170" Height="40" Margin="20,350,590,0" Content="SHOW ALL" FontSize="30" FontWeight="ExtraBlack" Background="White"></Button>
-        <ListBox Height="300" Margin="547,90,10,10">
-            <ListBox ItemsSource="{Binding Books}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel>
-                            <TextBlock Text="{Binding Id}" />
-                            <TextBlock Text="{Binding Name}" />
-                            <TextBlock Text="{Binding Pages}" />
-                            <TextBlock Text="{Binding YearPress}" />
-                            <TextBlock Text="{Binding Id_Themes}" />
-                            <TextBlock Text="{Binding Id_Category}" />
-                            <TextBlock Text="{Binding Id_Author}" />
-                            <TextBlock Text="{Binding Id_Press}" />
-                            <TextBlock Text="{Binding Comment}" />
-                            <TextBlock Text="{Binding Quantity}" />
-                            <!-- Add more TextBlocks or other controls as needed -->
-                        </WrapPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+        <Label Width="100" Height="40" Content="Id_Author" FontSize="20" Foreground="White" Margin="10,0,770,400"></Label>
+        <Label Width="100" Height="40" Content="Id_Press" FontSize="20" Foreground="White" Margin="10,0,470,400"></Label>
+        <Label Width="110" Height="40" Content="Comment" FontSize="20" Foreground="White" Margin="10,0,170,400"></Label>
+
+        <Label Width="110" Height="40" Content="Quantity" FontSize="20" Foreground="White" Margin="130,0,0,400"></Label>
+        <TextBox Width="100"  Text="{Binding Id}" Height="30" FontSize="20" Margin="10,0,1070,500"/>
+        <TextBox Width="100" Text="{Binding Name}" Height="30" FontSize="20" Margin="10,0,770,500"/>
+        <TextBox Width="100" Text="{Binding Pages}" Height="30" FontSize="20" Margin="10,0,470,500"/>
+        <TextBox Width="100" Text="{Binding YearPress}" Height="30" FontSize="20" Margin="10,0,170,500"/>
+        <TextBox Width="100" Text="{Binding Themes}" Height="30" FontSize="20" Margin="130,0,0,500"/>
+        <TextBox Width="100" Text="{Binding Category}" Height="30" FontSize="20" Margin="10,0,1070,340"/>
+        <TextBox Width="100" Text="{Binding Author}" Height="30" FontSize="20" Margin="10,0,770,340"/>
+        <TextBox Width="100" Text="{Binding Press}" Height="30" FontSize="20" Margin="10,0,470,340"/>
+        <TextBox Width="100" Text="{Binding Comment}" Height="30" FontSize="20" Margin="10,0,170,340"/>
+        <TextBox Width="100" Text="{Binding Quantity}" Height="30" FontSize="20" Margin="130,0,0,340"/>
+        <Button Command="{Binding InsertClickCommand}" Width="150" Height="40" Margin="580,0,20,505" Content="INSERT" FontSize="30" FontWeight="ExtraBlack" Background="White"></Button>
+        <Button Command="{Binding DeleteClickCommand}" Width="140" Height="40" Margin="580,0,20,375" Content="DELETE" FontSize="30" FontWeight="ExtraBlack" Background="White"></Button>
+        <Button Command="{Binding ShowClickCommand}" Width="170" Height="40" Margin="580,0,20,245" Content="SHOW ALL" FontSize="30" FontWeight="ExtraBlack" Background="White"></Button>
+        <ListBox ItemsSource="{Binding Books}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="400" Margin="0,220,0,0" SelectedItem="{Binding SelectedBook,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            <i1:Interaction.Triggers>
+                <i1:EventTrigger EventName="SelectionChanged">
+                    <i1:InvokeCommandAction Command="{Binding SelectionChangedCommand}"
+                                   CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}}"/>
+                </i1:EventTrigger>
+            </i1:Interaction.Triggers>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Width="50" Text="{Binding Id}" />
+                        <TextBlock Width="400" Text="{Binding Name}" />
+                        <TextBlock Width="50" Text="{Binding Pages}" />
+                        <TextBlock Width="50" Text="{Binding YearPress}" />
+                        <TextBlock Width="50" Text="{Binding Themes}" />
+                        <TextBlock Width="50" Text="{Binding Category}" />
+                        <TextBlock Width="50" Text="{Binding Author}" />
+                        <TextBlock Width="50" Text="{Binding Press}" />
+                        <TextBlock Width="250" Text="{Binding Comment}" />
+                        <TextBlock Width="50" Text="{Binding Quantity}" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            
         </ListBox>
     </Grid>
 </UserControl>

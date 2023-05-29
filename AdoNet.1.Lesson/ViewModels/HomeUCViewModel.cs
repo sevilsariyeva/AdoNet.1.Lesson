@@ -10,6 +10,7 @@ using System.Windows;
 using System.Diagnostics;
 using System.Xml.Linq;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
 
 namespace AdoNet._1.Lesson.ViewModels
 {
@@ -117,6 +118,92 @@ namespace AdoNet._1.Lesson.ViewModels
             set { books = value;OnPropertyChanged(); }
         }
 
+        private Book selectedBook=new Book();
+
+        public Book SelectedBook
+        {
+            get { return selectedBook; }
+            set { selectedBook = value;OnPropertyChanged(); }
+        }
+        public void Delete()
+        {
+            using (var conn = new SqlConnection())
+            {
+                var connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Library;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                conn.ConnectionString = connectionString;
+                conn.Open();
+
+
+                string query = $@" DELETE FROM Books WHERE Id=SelectedBook.Id";
+
+                var paramId = new SqlParameter();
+                paramId.ParameterName = "@id";
+                paramId.SqlDbType = SqlDbType.Int;
+                paramId.Value = SelectedBook.Id;
+
+                var paramName = new SqlParameter();
+                paramName.ParameterName = "@bookName";
+                paramName.SqlDbType = SqlDbType.NVarChar;
+                paramName.Value = SelectedBook.Name;
+
+                var paramPage = new SqlParameter();
+                paramPage.ParameterName = "@pages";
+                paramPage.SqlDbType = SqlDbType.Int;
+                paramPage.Value = SelectedBook.Pages;
+
+                var paramYear = new SqlParameter();
+                paramYear.ParameterName = "@yearPress";
+                paramYear.SqlDbType = SqlDbType.Int;
+                paramYear.Value = SelectedBook.YearPress;
+
+                var paramThemes = new SqlParameter();
+                paramThemes.ParameterName = "@themes";
+                paramThemes.SqlDbType = SqlDbType.Int;
+                paramThemes.Value = SelectedBook.Themes;
+
+                var paramCategory = new SqlParameter();
+                paramCategory.ParameterName = "@category";
+                paramCategory.SqlDbType = SqlDbType.Int;
+                paramCategory.Value = SelectedBook.Category;
+
+                var paramAuthor = new SqlParameter();
+                paramAuthor.ParameterName = "@author";
+                paramAuthor.SqlDbType = SqlDbType.Int;
+                paramAuthor.Value = SelectedBook.Author;
+
+                var paramPress = new SqlParameter();
+                paramPress.ParameterName = "@press";
+                paramPress.SqlDbType = SqlDbType.Int;
+                paramPress.Value = SelectedBook.Press;
+
+                var paramComment = new SqlParameter();
+                paramComment.ParameterName = "@comment";
+                paramComment.SqlDbType = SqlDbType.NVarChar;
+                paramComment.Value = SelectedBook.Comment;
+
+                var paramQuantity = new SqlParameter();
+                paramQuantity.ParameterName = "@quantity";
+                paramQuantity.SqlDbType = SqlDbType.Int;
+                paramQuantity.Value = SelectedBook.Quantity;
+
+                using (var command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.Remove(paramId);
+                    command.Parameters.Remove(paramName);
+                    command.Parameters.Remove(paramPage);
+                    command.Parameters.Remove(paramYear);
+                    command.Parameters.Remove(paramThemes);
+                    command.Parameters.Remove(paramCategory);
+                    command.Parameters.Remove(paramAuthor);
+                    command.Parameters.Remove(paramPress);
+                    command.Parameters.Remove(paramComment);
+                    command.Parameters.Remove(paramQuantity);
+
+                    var result = command.ExecuteNonQuery();
+                    MessageBox.Show($"Book is deleted!");
+                }
+            }
+        }
         public void Insert()
         {
             using (var conn = new SqlConnection())
@@ -193,7 +280,7 @@ namespace AdoNet._1.Lesson.ViewModels
                     command.Parameters.Add(paramQuantity);
 
                     var result = command.ExecuteNonQuery();
-                    MessageBox.Show($"{result} row affected");
+                    MessageBox.Show($"Book is added!");
                 }
             }
         }
@@ -231,6 +318,9 @@ namespace AdoNet._1.Lesson.ViewModels
         }
         public RelayCommand InsertClickCommand { get; set; }
         public RelayCommand ShowClickCommand { get; set; }
+        public RelayCommand DeleteClickCommand { get; set; }
+        public RelayCommand SelectionChangedCommand { get; set; }
+
         public HomeUCViewModel()
         {
             InsertClickCommand = new RelayCommand(obj =>
@@ -240,6 +330,14 @@ namespace AdoNet._1.Lesson.ViewModels
             ShowClickCommand = new RelayCommand(obj =>
             {
                 Show();
+            });
+            SelectionChangedCommand = new RelayCommand(obj =>
+            {
+                SelectedBook = obj as Book;    
+            });
+            DeleteClickCommand = new RelayCommand(obj =>
+            {
+                Delete();
             });
         }
     }

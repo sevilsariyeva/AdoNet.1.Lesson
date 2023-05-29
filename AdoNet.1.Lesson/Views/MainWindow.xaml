@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdoNet._1.Lesson"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+        Title="MainWindow" Height="650" Width="1200" WindowStartupLocation="CenterScreen" >
     <Grid Name="myGrid">
         
     </Grid>
